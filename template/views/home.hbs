@@ -1,0 +1,18 @@
+{{>header}}
+<header>
+    <div class="tasks">
+    </div>
+    <div class="headings">
+        <h2>Tasks</h2>
+        <a href="/tasks">View Tasks</a>
+        <a href="/addtask">Add</a>
+        {{#if user}}
+        <a href="/users/logout">Logout</a>
+        <a href="/viewprofile">Profile</a>
+        {{else}}
+        <a href="/users/login">Login</a>
+        <a href="/users">Sign Up</a>
+        {{/if}}
+    </div>
+</header>
+{{>footer}}

@@ -1,0 +1,44 @@
+<form>
+    <h2>Fill the details</h2>
+    <label for="name">Name</label>
+    <input type="text" name="name" required>
+    <label for="age">Age</label>
+    <input type="nuber" name="age">
+    <label for="email">Email</label>
+    <input type="email" name="email" required>
+    <div class="email error"></div>
+    <label for="password">Password</label>
+    <input type="password" name="password" required>
+    <div class="password error"></div>
+    <button>Update</button>
+</form>
+<script>
+    const form=document.querySelector('form')
+    const emailError=document.querySelector('.email.error')
+    const passwordError=document.querySelector('.password.error')
+    emailError.textContent=''
+    passwordError.textContent=''
+    form.addEventListener('submit',async(e)=>{
+        e.preventDefault()    
+        const name=form.name.value
+        const age=form.age.value
+        const email=form.email.value
+        const password=form.password.value
+        try{
+            const res=await fetch('/users/me',{
+                method:'PATCH',
+                body:JSON.stringify({name,age,email,password}),
+                headers:{'Content-type':'application/json'}
+            })
+            const data=await res.json()
+            console.log(data)
+            window.location.replace("/viewprofile")
+            if(data.errors){
+                emailError.textContent=data.errors.email
+                passwordError.textContent=data.errors.password
+            }
+        }catch(e){
+            console.log(e)
+        }
+    })
+</script>

@@ -1,0 +1,33 @@
+<a href="/">Home</a>
+<h2>Add task</h2>
+<form>
+    <label for="description">Description</label>
+    <input type="text" name="description" required>
+    <label for="completed">Completed</label>
+    <input type="text" name="completed" required>
+    <button>Add</button>
+</form>
+<a href="/tasks">View Tasks</a>
+<script>
+    const form=document.querySelector('form')
+    form.addEventListener('submit',async(e)=>{
+        e.preventDefault()
+        const description=form.description.value
+        const completed=form.completed.value
+        try{
+            const res=await fetch('/addtask',{
+                method:'POST',
+                body:JSON.stringify({description,completed}),
+                headers:{'Content-type':'application/json'}
+            })
+            const data=await res.json()
+            console.log(data)
+            window.location.replace("/tasks")
+        }catch(e){
+            console.log(e)
+        }
+    })
+</script>
+
+
+

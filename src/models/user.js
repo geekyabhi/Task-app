@@ -7,13 +7,13 @@ const Tasks = require('./task')
 const userSchema=new mongoose.Schema({
     name:{
         type:String,
-        required:true,
+        required:[true,'Please enter name'],
         trim:true
     },
     email:{
         type:String,
         unique:true,
-        required:true,
+        required:[true,'Please enter an email'],
         trim:true,
         validate(value){
             if(!validator.isEmail(value)){
@@ -23,9 +23,9 @@ const userSchema=new mongoose.Schema({
     },
     password:{
         type:String,
-        require:true,
+        require:[true,'Please enter the password'],
         trim:true,
-        minlength:7,
+        minlength:[5,'Min length is 5'],
         trim:true,
         lowercase:true,
         validate(value){

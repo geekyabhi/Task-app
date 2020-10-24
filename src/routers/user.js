@@ -1,48 +1,86 @@
 const express = require('express')
-const auth = require('../middleware/auth')
+const objectSent=require('../middleware/auth')
+const auth=objectSent[0]
+const checkUser=objectSent[1]
 const User=require('../models/user')
 const sharp=require('sharp')
+
 const multer=require('multer')
 const {sendWelcomeEmail,sendCancelEmail}=require('../emails/account')
 
 const router = new express.Router()
 
+const maxAge=3*24*60*60
+
+const errorHandler=(e)=>{
+    console.log(e.message,e.code)
+    let errors={email:'',password:''}
+    if(e.code===11000){
+        errors.email='this email is already registered'
+        return errors
+    }
+    if(e.message.includes('user validation failed')){
+        Object.values(e.errors).forEach(({properties})=>{
+            error[properties.path]=properties.message
+        })
+    }
+    return errors
+}
+
+router.get('*',checkUser)
+
+router.get('/users',async(req,res)=>{
+    res.render('signup')
+})
 router.post('/users',async (req,res)=>{
     const user=new User(req.body)
+    console.log(user)
     try{
         const token=await user.generateAuthToken()
         await user.save()
         sendWelcomeEmail(user.email,user.name)
-        res.status(201).send({user,token})
+        res.cookie('jwt',token,{httpOnly:true,maxAge:maxAge*1000})
+        res.json({user:user._id})
     }catch(e){
-        res.status(400).send()
-        console.log(e)
+        const error=errorHandler(e)
+        res.status(400).json({error})
     }
+})
+
+router.get('/users/login',async(req,res)=>{
+    res.render('login')
 })
 
 router.post('/users/login',async (req,res)=>{
     try{
         const user=await User.findByCredentials(req.body.email,req.body.password)
+        console.log(user)
         const token=await user.generateAuthToken()
+        res.cookie('jwt',token,{httpOnly:true,maxAge:maxAge*1000})
         res.send({user,token})
+        res.status(201).json({user:user._id})
     }catch(e){
-        res.status(400).send()
-        console.log(e)
+        res.status(400).json({errors:'Cannot login, wrong id or password'})
     }
 })
 
-router.post('/users/logout',auth,async(req,res)=>{
-    try{
-        req.user.tokens=req.user.tokens.filter((token)=>{
-            return token.token !== req.token
-        })
-        await req.user.save()
-        res.send()
-    }catch(e){
-        res.status(500).send()
-        console.log(e)
-    }
+router.get('/users/logout',auth,async(req,res)=>{
+    res.cookie('jwt','',{maxAge:1})
+    res.redirect('/')
 })
+
+// router.post('/users/logout',auth,async(req,res)=>{
+//     try{
+//         req.user.tokens=req.user.tokens.filter((token)=>{
+//             return token.token !== req.token
+//         })
+//         await req.user.save()
+//         res.send()
+//     }catch(e){
+//         res.status(500).send()
+//         console.log(e)
+//     }
+// })
 
 router.post('/users/logoutAll',auth,async (req,res)=>{
     try{
@@ -55,6 +93,9 @@ router.post('/users/logoutAll',auth,async (req,res)=>{
     }
 })
 
+router.get('/viewprofile',auth,async(req,res)=>{
+    res.render('profile')
+})
 
 router.get('/users/me',auth,async (req,res)=>{ 
     try{
@@ -63,15 +104,10 @@ router.get('/users/me',auth,async (req,res)=>{
         res.status(500).send()
         console.log('Error',e)
     }
-    //All this no longer needed for the authentication point of view
-    // try{
-    //     const users=await User.find({})
-    //     res.send(users)
-    // }catch{
-    //     res.status(500).send()
-    // }
 })
-
+router.get('/update',auth,async(req,res)=>{
+    res.render('update')
+})
 router.patch('/users/me',auth,async(req,res)=>{
     const updates=Object.keys(req.body)
     const allowedUpdates=['name','password','age','email']
@@ -86,8 +122,6 @@ router.patch('/users/me',auth,async(req,res)=>{
             req.user[update]=req.body[update]
         })
         await req.user.save()
-        //Find by id and update directly make changes to the database and byspasses the user schema 
-        // const user=await User.findByIdAndUpdate(req.params.id,req.body,{new :true,runValidators:true})
         res.send(req.user)
     }catch(e){
         res.status(400).send(e)
