@@ -19,7 +19,7 @@
         e.preventDefault()
         const email=form.email.value
         const password=form.password.value
-        console.log(email,password)
+        {{!-- console.log(email,password) --}}
         try{
             const res=await fetch('/users/login',{
                 method:'POST',
@@ -28,7 +28,10 @@
             })
             const data=await res.json()
             console.log(data)
-            window.location.replace("/")
+            {{!-- if(!data.error) --}}
+                {{!-- window.location.replace("/") --}}
+            {{!-- else --}}
+                {{!-- console.log(data.error) --}}
         }catch(e){
             console.log(e)        }
     })

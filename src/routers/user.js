@@ -53,14 +53,16 @@ router.get('/users/login',async(req,res)=>{
 
 router.post('/users/login',async (req,res)=>{
     try{
+        console.log(req.body.email)
+        console.log(req.body.password)
         const user=await User.findByCredentials(req.body.email,req.body.password)
-        console.log(user)
+        // console.log(user)
         const token=await user.generateAuthToken()
         res.cookie('jwt',token,{httpOnly:true,maxAge:maxAge*1000})
         res.send({user,token})
         res.status(201).json({user:user._id})
     }catch(e){
-        res.status(400).json({errors:'Cannot login, wrong id or password'})
+        res.status(400).json({errors:'Cannot login !' + e})
     }
 })
 
