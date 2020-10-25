@@ -6,6 +6,7 @@
 <script>
     const taskList=document.querySelector('.task-list')
     const noTaskMessage=document.querySelector('.no-task-message')
+    noTaskMessage.style.display='none'
     fetch('/task',{
       headers : { 
         'Content-Type': 'application/json',

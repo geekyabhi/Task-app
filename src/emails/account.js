@@ -22,7 +22,7 @@ const sendCancelEmail=(email,name)=>{
         to:email,
         from:'thakurabhinav17122001@gmail.com',
         subject:'GoodBye !!',
-        text:`${name} its sorry to see you go !! `
+        text:`${name} its sorry to see you go !!We will hope  to see you again`
     }).then(r=>{
         // console.log('Sent')
         // console.log(r)
