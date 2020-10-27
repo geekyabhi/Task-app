@@ -1,8 +1,22 @@
-<a href="/">Home</a>
-<h3 class='no-task-message'>No task !</h3>
-<ul class='task-list'>
-</ul>
-<a href="/addtask">Add</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet">        
+    <link href="https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="/css/ionicons-2.0.1/css/ionicons.min.css">
+</head>
+<body>
+    <a href="/" class="home-button"><i class="ion-ios-home"></i></a>
+    <h3 class='no-task-message'>No task !</h3>
+    <ul class='task-list'>
+    </ul>
+    <a href="/addtask" class="add-new-task"><i class="ion-ios-plus"></i></a>    
+</body>
 <script>
     const taskList=document.querySelector('.task-list')
     const noTaskMessage=document.querySelector('.no-task-message')
@@ -27,7 +41,8 @@
                     
                 var newListItem=document.createElement('li') 
                 var  newDiv=document.createElement('div')
-                
+                newDiv.className="task-card"
+
                 var taskNo=document.createElement('h3')
                 taskNo.textContent='Task : '+i
 
@@ -61,6 +76,7 @@
     })
     function remove(e){
         if(e.target.classList.contains('del-Btn')){
+       
             var id=e.target.id
             var route='/deletetask/'+id
             console.log(route)
@@ -72,3 +88,4 @@
         }
     }
 </script>
+</html>

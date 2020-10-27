@@ -29,6 +29,10 @@ const errorHandler=(e)=>{
 
 router.get('*',checkUser)
 
+router.get('/about',async(req,res)=>{
+    res.render('about')
+})
+
 router.get('/users',async(req,res)=>{
     res.render('signup')
 })

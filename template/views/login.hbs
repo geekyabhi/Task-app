@@ -1,18 +1,27 @@
-{{#if user}}
-    {{>header}}        
-{{/if}}
-<a href="/">Home</a>
-<form>
-    <h2>Log in</h2>
-    <label for="email">Email</label>
-    <input type="text" name="email" required>
-    <div class="email error"></div>
-    <label for="password">Password</label>
-    <input type="password" name="password" required>
-    <div class="password error"></div>
-    <button>Login</button>
-</form>
-<a href="/users">Sign Up</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Task App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet">        
+    <link href="https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="/css/ionicons-2.0.1/css/ionicons.min.css">
+</head>
+<body>
+    <a href="/" class="home-button"><i class="ion-ios-home"></i></a>
+    <form>
+        <h2>Log in</h2>
+        <label for="email">Email</label>
+        <input type="text" name="email" required>
+        <div class="email error"></div>
+        <label for="password">Password</label>
+        <input type="password" name="password" required>
+        <div class="password error"></div>
+        <button>Login</button>
+        <a href="/users">Sign Up</a>
+    </form>
+</body>
 <script>
     const form=document.querySelector('form')
     form.addEventListener('submit',async(e)=>{
@@ -37,4 +46,4 @@
     })
 
 </script>
-{{>footer}}
+</html>

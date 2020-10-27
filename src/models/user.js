@@ -1,6 +1,6 @@
 const mongoose=require('mongoose')
 const validator=require('validator')
-const bcrypt=require('bcryptjs')
+const bcrypt=require('bcrypt')
 const jwt=require('jsonwebtoken')
 const Tasks = require('./task')
 
@@ -87,8 +87,9 @@ userSchema.statics.findByCredentials = async (email,password)=>{
         throw new Error('No such user')
     }
     const temppassword=await bcrypt.hash(password,8)
-    console.log(user.password)
-    console.log(temppassword) 
+    console.log('Password duringsignup : '+user.password)
+    console.log('Hashed password : '+temppassword)
+    console.log('Entered password : '+password) 
     const isMatch=await bcrypt.compare(password,user.password)
     console.log(isMatch)
     if(!isMatch){

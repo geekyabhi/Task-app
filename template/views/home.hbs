@@ -1,18 +1,52 @@
-{{>header}}
-<header>
-    <div class="tasks">
-    </div>
-    <div class="headings">
-        <h2>Tasks</h2>
-        <a href="/tasks">View Tasks</a>
-        <a href="/addtask">Add</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet">        
+    <link href="https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="/css/ionicons-2.0.1/css/ionicons.min.css">
+</head>
+<body>    
+    <div class="options-1">
         {{#if user}}
-        <a href="/users/logout">Logout</a>
-        <a href="/viewprofile">Profile</a>
+        <ul>
+            <li><a href="/users/logout" class="btn-small btn-1">Logout</a></li>
+            <li><a href="/viewprofile" class="btn-small btn-2">Profile</a></li>
+        </ul>
         {{else}}
-        <a href="/users/login">Login</a>
-        <a href="/users">Sign Up</a>
+        <ul>
+            <li ><a href="/users/login" class="btn-small btn-1">Login</a></li>
+            <li ><a href="/users" class="btn-small btn-2">Sign Up</a></li>
+        </ul>
         {{/if}}
     </div>
-</header>
-{{>footer}}
+    {{#if user}}
+    <div class="welcome-name">
+        {{>header}}
+    </div>
+    {{else}}
+    <div class="bait">
+        {{>header}}
+    </div>
+    {{/if}}
+    {{#if user}}
+    <div class="options-2">
+        <a href="/addtask" class="btn-small btn-1">Add New Tasks</a>
+        <a href="/tasks" class="btn-small btn-2">View Your Tasks</a>
+    </div>
+    {{else}}
+    <div class="add-proposal">
+        <a href="/addtask" class="btn-big">Add  Your Tasks Now</a>
+    </div>
+    {{/if}}
+</body>
+<div class="footer">
+    <h2>Created By <span class="link"><a href="https://github.com/geekyabhi"></span> Abhinav Thakur</a> &#169; 2020   </h2>
+    <h2><span class="link"><a href="https://github.com/geekyabhi/Task-app">Github <i class="ion-social-github"></i></a></span></h2>
+    <h2><span class="link"><a href="/about">About <i class="ion-help"></i></a></span></h2>
+</div>
+</html>

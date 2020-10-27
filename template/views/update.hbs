@@ -1,17 +1,37 @@
-<form>
-    <h2>Fill the details</h2>
-    <label for="name">Name</label>
-    <input type="text" name="name" required>
-    <label for="age">Age</label>
-    <input type="nuber" name="age">
-    <label for="email">Email</label>
-    <input type="email" name="email" required>
-    <div class="email error"></div>
-    <label for="password">Password</label>
-    <input type="password" name="password" required>
-    <div class="password error"></div>
-    <button>Update</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet">        
+    <link href="https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="/css/ionicons-2.0.1/css/ionicons.min.css">
+</head>
+<body>
+    <a href="/" class="home-button"><i class="ion-ios-home"></i></a>
+    <div class="update-profile">
+        <h1>Update Your Profile</h1>
+    </div>
+    <div class="update-card">
+        <form class="form">
+            <h2>Fill the details</h2>
+            <div class="query"><label for="name">Name</label></div>
+            <input type="text" name="name" required>
+            <div class="query"><label for="age">Age</label></div>
+            <input type="nuber" name="age">
+            <div class="query"><label for="email">Email</label></div>
+            <input type="email" name="email" required>
+            <div class="email error"></div>
+            <div class="query"><label for="password">Password</label></div>
+            <input type="password" name="password" required>
+            <div class="password error"></div>
+            <button class='btn-small btn-1'>Update</button>
+        </form>
+    </div>
+</body>
 <script>
     const form=document.querySelector('form')
     const emailError=document.querySelector('.email.error')
@@ -42,3 +62,4 @@
         }
     })
 </script>
+</html>

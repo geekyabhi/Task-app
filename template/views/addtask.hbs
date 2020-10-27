@@ -1,13 +1,29 @@
-<a href="/">Home</a>
-<h2>Add task</h2>
-<form>
-    <label for="description">Description</label>
-    <input type="text" name="description" required>
-    <label for="completed">Completed</label>
-    <input type="text" name="completed" required>
-    <button>Add</button>
-</form>
-<a href="/tasks">View Tasks</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet">        
+    <link href="https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="/css/ionicons-2.0.1/css/ionicons.min.css">
+</head>
+<body>
+    <a href="/" class="home-button"><i class="ion-ios-home"></i></a>
+    <div class="add-task-form-card">
+        <h2>Add task</h2>
+        <form>
+            <label for="description">Description</label>
+            <input type="text" name="description" required>
+            <label for="completed">Completed</label>
+            <input type="text" name="completed" required>
+            <button class="btn-small btn-1">Add</button>
+        </form>
+        <a href="/tasks" class="btn-small btn-2">Back</a>
+    </div>
+</body>
 <script>
     const form=document.querySelector('form')
     form.addEventListener('submit',async(e)=>{
@@ -28,6 +44,8 @@
         }
     })
 </script>
+
+</html>
 
 
 
