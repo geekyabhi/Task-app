@@ -232,6 +232,19 @@ a{
     margin-bottom:5px;
     font-size: 15px;
 }
+.login{
+    display: inline-block;
+    position: absolute;
+    font-family: 'Pacifico', cursive;;
+    left:50%;
+    top:10%;
+    font-size: 20px;
+    transform: translate(-50%,-50%);
+}
+.login-card{
+    display: inline-block;
+    border: 1px solid #000;
+}
 .task-list{
     /* display: none; */
     /* position: absolute;
