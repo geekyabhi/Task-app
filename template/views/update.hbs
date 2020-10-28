@@ -26,7 +26,7 @@
             <input type="email" name="email" required>
             <div class="email error"></div>
             <div class="query"><label for="password">Password</label></div>
-            <input type="password" name="password" required>
+            <input type="password" name="password" placeholder="Enter your password" required>
             <div class="password error"></div>
             <button class='btn-small btn-1'>Update</button>
         </form>
@@ -38,6 +38,21 @@
     const passwordError=document.querySelector('.password.error')
     emailError.textContent=''
     passwordError.textContent=''
+    
+    fetch('/users/me',{
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    }).then(response=>{
+        response.json().then(data=>{
+            form.name.value=data.name
+            form.age.value=data.age
+            form.email.value=data.email
+        })
+    })
+
+
     form.addEventListener('submit',async(e)=>{
         e.preventDefault()    
         const name=form.name.value
