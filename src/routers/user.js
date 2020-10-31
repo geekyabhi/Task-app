@@ -47,7 +47,9 @@ router.post('/users',async (req,res)=>{
         res.json({user:user._id})
     }catch(e){
         const error=errorHandler(e)
+        // console.log(error)
         res.status(400).json({error})
+        res.send(error)
     }
 })
 
@@ -57,8 +59,8 @@ router.get('/users/login',async(req,res)=>{
 
 router.post('/users/login',async (req,res)=>{
     try{
-        console.log(req.body.email)
-        console.log(req.body.password)
+        // console.log(req.body.email)
+        // console.log(req.body.password)
         const user=await User.findByCredentials(req.body.email,req.body.password)
         // console.log(user)
         const token=await user.generateAuthToken()

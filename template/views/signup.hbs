@@ -23,11 +23,11 @@
             <div class="query"><label for="age">Age</label></div>
             <input type="nuber" name="age" placeholder="Enter your age">
             <div class="query"><label for="email">Email</label></div>
-            <input type="email" name="email" placeholder="Enter email xyx@abc.com" required>
-            <div class="email error"></div>
+            <input type="email" name="email" placeholder="Enter email xyx@abc.com" class="dsc" required  >
+            <div class="emailerror"></div>
             <div class="query"><label for="password">Password</label></div>
-            <input type="password" name="password" placeholder="Enter password" required>
-            <div class="password error"></div>
+            <input type="password" name="password" placeholder="Enter password" class="dsc" required>
+            <div class="passworderror"></div>
             <button class="btn-small btn-1">Sign Up</button>
         </form>
         <h5>Already have an account ? <a href="/users/login">Login</a></h5>
@@ -35,8 +35,8 @@
 </body>
 <script>
     const form=document.querySelector('form')
-    const emailError=document.querySelector('.email.error')
-    const passwordError=document.querySelector('.password.error')
+    const emailError=document.querySelector('.emailerror')
+    const passwordError=document.querySelector('.passworderror')
     
       
     emailError.textContent=''
@@ -56,14 +56,25 @@
             })
             const data=await res.json()
             console.log(data)
-            window.location.replace("/")
-            if(data.errors){
-                emailError.textContent=data.errors.email
-                passwordError.textContent=data.errors.password
+            if(data.error.email==="this email is already registered")
+            {
+                emailError.textContent="Already Registered"
+            }else if(data.error.email==="" && data.error.password===""){
+                passwordError.textContent="Min length is 5"
+            }
+            else{
+                console.log("Hello")
+                {{!-- window.location.replace("/") --}}
             }
         }catch(e){
             console.log(e)
         }
     })
+    form.addEventListener('click',errormsz)
+    function errormsz(e){
+        if(e.target.classList.contains('dsc'))
+            emailError.textContent=''
+            passwordError.textContent=''
+    }
 </script>
 </html>

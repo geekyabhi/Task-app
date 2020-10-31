@@ -1,6 +1,6 @@
 const mongoose=require('mongoose')
 const validator=require('validator')
-const bcrypt=require('bcrypt')
+const bcrypt=require('bcryptjs')
 const jwt=require('jsonwebtoken')
 const Tasks = require('./task')
 
@@ -27,7 +27,6 @@ const userSchema=new mongoose.Schema({
         trim:true,
         minlength:[5,'Min length is 5'],
         trim:true,
-        lowercase:true,
         validate(value){
             if(value.toLowerCase().includes('password')){
                 throw new Error('Cant contain password')
@@ -79,23 +78,20 @@ userSchema.methods.generateAuthToken=async function(){
     return token
 }
 
-
 userSchema.statics.findByCredentials = async (email,password)=>{
     const user=await User.findOne({email:email})
-    // console.log(user)
     if(!user){
         throw new Error('No such user')
     }
-    const temppassword=await bcrypt.hash(password,8)
-    console.log('Password duringsignup : '+user.password)
-    console.log('Hashed password : '+temppassword)
-    console.log('Entered password : '+password) 
     const isMatch=await bcrypt.compare(password,user.password)
+    
+    // console.log(user)
+    // console.log(password)
+    // console.log(user.password)
     console.log(isMatch)
     if(!isMatch){
         throw new Error('Wrong Password')
     }
-    // console.log(password)
     return user
 }
 
@@ -103,9 +99,8 @@ userSchema.statics.findByCredentials = async (email,password)=>{
 userSchema.pre('save',async function(next){
     const user=this
     if(user.isModified('password')){
-        user.password=await bcrypt.hash(user.password,8)
+        user.password=await bcrypt.hash(user.password,10)
     }
-    // console.log('just before saving !!')
     next()
 })
 

@@ -455,3 +455,12 @@ a{
     height: 200px;
     border-radius: 50%;
 }
+.cantloginerror{
+    color: crimson;
+    font-size: 15px !important;
+}
+.emailerror,.passworderror{
+    color: crimson;
+    font-size: 12px;
+    margin-bottom: 5px;
+}

@@ -33,10 +33,14 @@ router.get('/task',auth,async(req,res)=>{
         const match={}
         const sort={}
 
+        // Tasks.find({}).then(task=>{
+        //     console.log(task)
+        // })
         if(req.query.completed){
             match.completed=req.query.completed==='true'
         }
-
+        // match.completed=req.query.completed
+        
         if(req.query.sortBy){
             const parts=req.query.sortBy.split(':')
             sort[parts[0]]=parts[1]==='desc'?-1:1
@@ -50,6 +54,7 @@ router.get('/task',auth,async(req,res)=>{
                 sort:sort
             }
         }).execPopulate()
+        // console.log(req.user.tasks)
         res.send(req.user.tasks)
     }catch(e){
         res.status(500).send(e)

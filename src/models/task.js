@@ -6,8 +6,8 @@ const taskSchema=new mongoose.Schema({
 
     },
     completed:{
-        type:Boolean,
-        default:false
+        type:String,
+        required:true,
     },
     owner:{
         type:mongoose.Schema.Types.ObjectId,
