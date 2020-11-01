@@ -23,7 +23,7 @@
             <div class="query"><label for="age">Age</label></div>
             <input type="nuber" name="age" placeholder="Enter your age">
             <div class="query"><label for="email">Email</label></div>
-            <input type="email" name="email" placeholder="Enter email xyx@abc.com" class="dsc" required  >
+            <input type="email" name="email" placeholder="Enter email xyx@abc.com" class="dsc" required>
             <div class="emailerror"></div>
             <div class="query"><label for="password">Password</label></div>
             <input type="password" name="password" placeholder="Enter password" class="dsc" required>
@@ -56,15 +56,13 @@
             })
             const data=await res.json()
             console.log(data)
-            if(data.error.email==="this email is already registered")
-            {
-                emailError.textContent="Already Registered"
-            }else if(data.error.email==="" && data.error.password===""){
-                passwordError.textContent="Min length is 5"
-            }
-            else{
-                console.log("Hello")
-                {{!-- window.location.replace("/") --}}
+            {{!-- window.location.replace("/") --}}
+            if(data.error){
+                if(data.error.email==='this email is already registered'){
+                    emailError.textContent='Already Registered'
+                }
+            }else{
+                window.location.replace("/")
             }
         }catch(e){
             console.log(e)
@@ -72,9 +70,10 @@
     })
     form.addEventListener('click',errormsz)
     function errormsz(e){
-        if(e.target.classList.contains('dsc'))
-            emailError.textContent=''
-            passwordError.textContent=''
+        if(e.target.classList.contains('dsc')){
+            if(emailError.textContent==='Already Registered')
+                emailError.textContent=""
+        }
     }
 </script>
 </html>
