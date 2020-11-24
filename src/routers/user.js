@@ -7,6 +7,7 @@ const sharp=require('sharp')
 
 const multer=require('multer')
 const {sendWelcomeEmail,sendCancelEmail}=require('../emails/account')
+const Tasks = require('../models/task')
 
 const router = new express.Router()
 
@@ -38,7 +39,6 @@ router.get('/users',async(req,res)=>{
 })
 router.post('/users',async (req,res)=>{
     const user=new User(req.body)
-    console.log(user)
     try{
         const token=await user.generateAuthToken()
         await user.save()
@@ -47,7 +47,6 @@ router.post('/users',async (req,res)=>{
         res.json({user:user._id})
     }catch(e){
         const error=errorHandler(e)
-        // console.log(error)
         res.status(400).json({error})
         res.send(error)
     }
@@ -59,14 +58,11 @@ router.get('/users/login',async(req,res)=>{
 
 router.post('/users/login',async (req,res)=>{
     try{
-        // console.log(req.body.email)
-        // console.log(req.body.password)
         const user=await User.findByCredentials(req.body.email,req.body.password)
-        // console.log(user)
         const token=await user.generateAuthToken()
         res.cookie('jwt',token,{httpOnly:true,maxAge:maxAge*1000})
+        // res.json({user:user._id})
         res.send({user,token})
-        res.status(201).json({user:user._id})
     }catch(e){
         res.status(400).json({errors:'Cannot login !' + e})
     }
@@ -141,6 +137,7 @@ router.delete('/users/me',auth,async(req,res)=>{
         await req.user.remove()
         sendCancelEmail(req.user.email,req.user.name)
         res.send(req.user)
+        // res.redirect()
     }catch(e){
         res.status(500).send()
     }
@@ -184,6 +181,16 @@ router.get('/user/:id/avatar',async (req,res)=>{
         res.send(user.avatar)
     }catch(e){
         res.status(404).send()
+    }
+})
+
+router.delete('/all',async (req,res)=>{
+    try{
+        await User.deleteMany({})
+        await Tasks.deleteMany({})
+        res.send({msz:"Deleted evrything"})
+    }catch(e){
+        console.log(`Cant be deleted ${e}`)
     }
 })
 

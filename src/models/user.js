@@ -71,45 +71,56 @@ userSchema.virtual('tasks',{
 })
 
 userSchema.methods.generateAuthToken=async function(){
-    const user=this
-    const token=jwt.sign({_id:user._id.toString()},process.env.JWT_SECRET,{expiresIn:'7 days'})
-    user.tokens=user.tokens.concat({token:token})
-    await user.save()
-    return token
+    try{
+        const user=this
+        const token=jwt.sign({_id:user._id.toString()},process.env.JWT_SECRET,{expiresIn:'7 days'})
+        user.tokens=user.tokens.concat({token:token})
+        await user.save()
+        return token
+    }catch(e){
+        console.log(`Cant create token ${e}`)
+    }
 }
 
 userSchema.statics.findByCredentials = async (email,password)=>{
-    const user=await User.findOne({email:email})
-    if(!user){
-        throw new Error('No such user')
+    try{
+        const user=await User.findOne({email:email})
+        if(!user){
+            throw new Error('No such user')
+        }
+        const isMatch=await bcrypt.compare(password,user.password)
+        if(!isMatch){
+            throw new Error('Wrong Password')
+        }
+        return user
+    }catch(e){
+        console.log('Cant login ',e)
     }
-    const isMatch=await bcrypt.compare(password,user.password)
-    
-    // console.log(user)
-    // console.log(password)
-    // console.log(user.password)
-    console.log(isMatch)
-    if(!isMatch){
-        throw new Error('Wrong Password')
-    }
-    return user
 }
 
 //Schema for saving
 userSchema.pre('save',async function(next){
-    const user=this
-    if(user.isModified('password')){
-        user.password=await bcrypt.hash(user.password,10)
+    try{
+        const user=this
+        if(user.isModified('password')){
+            user.password=await bcrypt.hash(user.password,10)
+        }
+        next()
+    }catch(e){
+        console.log('Error from the pre userschema of save in models')
     }
-    next()
 })
 
 //Deleting the data of the user that we want to delete
 
 userSchema.pre('remove',async function(next){
-    const user=this
-    await Tasks.deleteMany({owner:user._id})
-    next()
+    try{
+        const user=this
+        await Tasks.deleteMany({owner:user._id})
+        next()
+    }catch(e){
+        console.log('Error from the pre userschema of remove in models')
+    }
 })
 
 const User=mongoose.model('User',userSchema)

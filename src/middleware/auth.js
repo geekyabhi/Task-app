@@ -21,24 +21,25 @@ const auth=async (req,res,next)=>{
 }
 
 const checkUser=(req,res,next)=>{
-    const token=req.cookies.jwt
-    if(token){
-        jwt.verify(token,process.env.JWT_SECRET,async(err,decodedToken)=>{
-            if(err){
-                // console.log(err.message)
-                res.locals.user=null
-                next()
-            }else{
-                // console.log(decodedToken._id)
-                let user=await User.findById(decodedToken._id)
-                res.locals.user=user
-                // console.log('Hello',user.name)
-                next()
-            }
-        })
-    }else{
-        res.locals.user=null
-        next()
+    try{
+        const token=req.cookies.jwt
+        if(token){
+            jwt.verify(token,process.env.JWT_SECRET,async(err,decodedToken)=>{
+                if(err){
+                    res.locals.user=null
+                    next()
+                }else{
+                    let user=await User.findById(decodedToken._id)
+                    res.locals.user=user
+                    next()
+                }
+            })
+        }else{
+            res.locals.user=null
+            next()
+        }
+    }catch(e){
+        console.log('Error in checkuser in middleware',e)
     }
 }
 
