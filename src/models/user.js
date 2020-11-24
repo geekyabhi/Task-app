@@ -3,7 +3,9 @@ const validator=require('validator')
 const bcrypt=require('bcryptjs')
 const jwt=require('jsonwebtoken')
 const Tasks = require('./task')
-
+require('dotenv').config({
+    path: './config/dev.env'
+})
 const userSchema=new mongoose.Schema({
     name:{
         type:String,
