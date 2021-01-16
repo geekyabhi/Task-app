@@ -54,8 +54,19 @@ router.get('/task',auth,async(req,res)=>{
                 sort:sort
             }
         }).execPopulate()
-        // console.log(req.user.tasks)
-        res.send(req.user.tasks)
+        let completeTaskArr=[]
+        const taskarr=req.user.tasks
+        var i=0
+        taskarr.forEach(async (task)=> {
+            i++
+            const uniqueId=task._id
+            const completetask=await Tasks.findById((uniqueId))
+            // console.log(completetask)
+            // completeTaskArr.push({completetask})
+            console.log(i)
+        });
+        console.log(completeTaskArr.length)
+        res.send(completeTaskArr)
     }catch(e){
         res.status(500).send(e)
         console.log(e)
