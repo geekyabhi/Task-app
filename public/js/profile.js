@@ -18,3 +18,9 @@ fetch("/users/me", {
 		profile.appendChild(createdAt);
 	});
 });
+delAcc.addEventListener("click", async (e) => {
+	try {
+		await fetch("/users/me", { method: "DELETE" });
+		window.location.replace("/");
+	} catch (e) {}
+});
