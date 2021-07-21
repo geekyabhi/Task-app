@@ -1,0 +1,100 @@
+.main-body {
+	display: flex;
+	height: 90vh;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+.heading {
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+.nav-bar {
+	display: flex;
+	width: fit-content;
+	margin-left: auto;
+}
+
+.nav-bar a {
+	padding: 16px 30px;
+	margin: 20px 20px;
+	border-radius: 100px;
+	border: 1px solid rgb(33, 177, 177);
+}
+.nav-bar .btn-1 {
+	color: #fff;
+	background-color: rgb(33, 177, 177);
+	transition: all 0.2s;
+}
+
+.nav-bar .btn-2 {
+	color: rgb(33, 177, 177);
+	background-color: transparent;
+	transition: all 0.2s;
+}
+
+.nav-bar .btn-1:hover {
+	background-color: rgb(20, 117, 117);
+	box-shadow: 2px 2px 30px rgb(33, 177, 177);
+}
+
+.nav-bar .btn-2:hover {
+	color: #fff;
+	background-color: rgb(20, 117, 117);
+	box-shadow: 2px 2px 30px rgb(33, 177, 177);
+}
+
+.centre-body {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+.heading {
+	position: absolute;
+	top: 0;
+}
+
+.welcome-name,
+.bait {
+	margin-bottom: 30px;
+	font-size: 30px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	word-spacing: 3px;
+	font-weight: 300;
+}
+
+.centre-body .add-proposal a {
+	padding: 16px 30px;
+	margin: 40px 20px;
+	font-size: 20px;
+	font-weight: 100;
+	border-radius: 100px;
+	background-color: rgb(33, 177, 177);
+	border: 1px solid rgb(33, 177, 177);
+	color: #fff;
+	transition: all 0.2s;
+}
+
+.add-proposal a:hover {
+	background-color: rgb(20, 117, 117);
+	box-shadow: 2px 2px 30px rgb(33, 177, 177);
+}
+.options-2 a {
+	padding: 16px 30px;
+	margin: 40px 20px;
+	font-size: 20px;
+	font-weight: 100;
+	border-radius: 100px;
+	background-color: rgb(33, 177, 177);
+	border: 1px solid rgb(33, 177, 177);
+	color: #fff;
+	transition: all 0.2s;
+}
+.options-2 a:hover {
+	background-color: rgb(20, 117, 117);
+	box-shadow: 2px 2px 30px rgb(33, 177, 177);
+}

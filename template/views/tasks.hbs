@@ -1,92 +1,61 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task App</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet">        
-    <link href="https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="/css/ionicons-2.0.1/css/ionicons.min.css">
-</head>
-<body>
-    <a href="/" class="home-button"><i class="ion-ios-home"></i></a>
-    <h3 class='no-task-message'>No task !</h3>
-    <ul class='task-list'>
-    </ul>
-    <a href="/addtask" class="add-new-task"><i class="ion-ios-plus"></i></a>    
-</body>
-<script>
-    const taskList=document.querySelector('.task-list')
-    const noTaskMessage=document.querySelector('.no-task-message')
-    noTaskMessage.style.display='none'
-    fetch('/task',{
-      headers : { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-       }
-    }).then(response=>{
-        response.json().then(data=>{
-            {{!-- console.log(data) --}}
-            if(data.length===0){    
-                noTaskMessage.style.display='block'
-            }else{
-                noTaskMessage.style.display='none'
-                console.log(data)
-                
-                taskList.innerHTML=""
-                var i=1
-                data.forEach(task=>{ 
-                    
-                var newListItem=document.createElement('li') 
-                var  newDiv=document.createElement('div')
-                newDiv.className="task-card"
-
-                var taskNo=document.createElement('h3')
-                taskNo.textContent='Task : '+i
-
-                var description=document.createElement('p')
-                description.textContent='Description : '+task.description
-                
-                console.log(task.completed)
-                var completed=document.createElement('p')
-                completed.textContent='Completed : '+task.completed
-                
-                var createdAt=document.createElement('p')
-                createdAt.textContent='Created At : '+task.createdAt
-         
-                var deleteButton=document.createElement('button')
-                deleteButton.id=task._id
-                deleteButton.classList.add('del-Btn')
-                deleteButton.textContent='Delete'
-                
-                newDiv.appendChild(taskNo)         
-                newDiv.appendChild(description)         
-                newDiv.appendChild(completed)         
-                newDiv.appendChild(createdAt)
-                newDiv.appendChild(deleteButton)
-                newListItem.appendChild(newDiv)
-                taskList.appendChild(newListItem)
-                i++
-                })
-            }
-        })
-    }).then(response=>{
-        taskList.addEventListener('click',remove)
-    })
-    function remove(e){
-        if(e.target.classList.contains('del-Btn')){
-       
-            var id=e.target.id
-            var route='/deletetask/'+id
-            console.log(route)
-            fetch(route,{method:'DELETE'}).then(res=>{
-                res.text()
-            }).then(res=>{
-                window.location.replace("/tasks")
-            })   
-        }
-    }
-</script>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task App</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,400&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="./css/style-addtask.css" />
+		<link
+			rel="stylesheet"
+			href="/css/ionicons-2.0.1/css/ionicons.min.css"
+		/>
+	</head>
+	<body>
+		<a href="/" class="home-button"><i class="ion-ios-home"></i></a>
+		<h3 class="no-task-message">No task !</h3>
+		<ul class="task-list">
+		</ul>
+		<a href="/addtask" class="add-new-task"><i class="ion-ios-plus"></i></a>
+	</body>
+	<script>
+		const taskList=document.querySelector('.task-list') const
+		noTaskMessage=document.querySelector('.no-task-message')
+		noTaskMessage.style.display='none' fetch('/task',{ headers : {
+		'Content-Type': 'application/json', 'Accept': 'application/json' }
+		}).then(response=>{ response.json().then(data=>{
+		{{! console.log(data) }}
+		if(data.length===0){ noTaskMessage.style.display='block' }else{
+		noTaskMessage.style.display='none' console.log(data)
+		taskList.innerHTML="" var i=1 data.forEach(task=>{ var
+		newListItem=document.createElement('li') var
+		newDiv=document.createElement('div') newDiv.className="task-card" var
+		taskNo=document.createElement('h3') taskNo.textContent='Task : '+i var
+		description=document.createElement('p')
+		description.textContent='Description : '+task.description
+		console.log(task.completed) var completed=document.createElement('p')
+		completed.textContent='Completed : '+task.completed var
+		createdAt=document.createElement('p') createdAt.textContent='Created At
+		: '+task.createdAt var deleteButton=document.createElement('button')
+		deleteButton.id=task._id deleteButton.classList.add('del-Btn')
+		deleteButton.textContent='Delete' newDiv.appendChild(taskNo)
+		newDiv.appendChild(description) newDiv.appendChild(completed)
+		newDiv.appendChild(createdAt) newDiv.appendChild(deleteButton)
+		newListItem.appendChild(newDiv) taskList.appendChild(newListItem) i++ })
+		} }) }).then(response=>{ taskList.addEventListener('click',remove) })
+		function remove(e){ if(e.target.classList.contains('del-Btn')){ var
+		id=e.target.id var route='/deletetask/'+id console.log(route)
+		fetch(route,{method:'DELETE'}).then(res=>{ res.text() }).then(res=>{
+		window.location.replace("/tasks") }) } }
+	</script>
 </html>

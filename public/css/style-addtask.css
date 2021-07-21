@@ -16,17 +16,3 @@ a {
 li {
 	list-style-type: none;
 }
-.home-button {
-	position: absolute;
-	top: 30px;
-	right: 40px;
-	font-size: 40px;
-	color: rgb(20, 177, 177);
-	border: 1px solid rgb(20, 177, 177);
-	padding: 10px 15px;
-	border-radius: 50%;
-	transition: all 0.2s;
-}
-.home-button:hover {
-	box-shadow: 2px 2px 20px rgb(33, 177, 177);
-}
