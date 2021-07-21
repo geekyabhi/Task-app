@@ -25,26 +25,32 @@
 	</head>
 	<body>
 		<a href="/" class="home-button"><i class="ion-ios-home"></i></a>
-		<div class="add-task-form-card">
-			<h2>Add task</h2>
-			<form>
-				<label for="description">Description</label>
-				<input
-					type="text"
-					name="description"
-					placeholder="What your task is about"
-					required
-				/>
-				<label for="completed">Completed</label>
-				<input
-					type="text"
-					name="completed"
-					placeholder="Is your task completed or not"
-					required
-				/>
-				<button class="btn-small btn-1">Add</button>
-			</form>
-			<a href="/tasks" class="btn-small btn-2">Back</a>
+		<div class="card">
+			<h1>Add task</h1>
+			<div class="form-card">
+				<form>
+					<div class="query"><label
+							for="description"
+						>Description</label></div>
+					<input
+						type="text"
+						name="description"
+						placeholder="What your task is about"
+						required
+					/>
+					<div class="query"><label
+							for="completed"
+						>Completed</label></div>
+					<input
+						type="text"
+						name="completed"
+						placeholder="Is your task completed or not"
+						required
+					/>
+					<button class="btn-small btn-1">Add</button>
+				</form>
+				<a href="/tasks" class="cancel-button">X</a>
+			</div>
 		</div>
 	</body>
 	<script>

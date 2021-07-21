@@ -1,18 +1,88 @@
-* {
-	box-sizing: border-box;
+.card {
+	position: absolute;
+	left: 50%;
+	top: 45%;
+	transform: translate(-50%, -50%);
+	width: 50%;
+	padding: 50px 60px;
+	box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.707);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
-body {
-	background-image: url("../images/background.jpg");
-	background-attachment: fixed;
-	background-position: center;
-	font-family: "Libre Franklin", sans-serif;
-	font-weight: 400;
-	background-size: cover;
-}
-a {
-	text-decoration: none;
+.card h1 {
+	font-size: 30px;
+	font-weight: 200;
+	letter-spacing: 2px;
+	word-spacing: 3px;
+	margin-bottom: 20px;
 }
 
-li {
-	list-style-type: none;
+.card .form-card {
+	min-width: 300px;
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.form-card form {
+	width: 100%;
+}
+.form-card form .query {
+	margin: 20px 0;
+	font-size: 17px;
+}
+.form-card form input {
+	width: 100%;
+	padding: 10px;
+	outline: none;
+	border-radius: 100px;
+	border: 1px solid rgb(33, 177, 177);
+	transition: all 0.2s;
+}
+.form-card form input:hover {
+	box-shadow: 3px 3px 20px rgb(33, 177, 177);
+}
+
+.form-card form button {
+	outline: none;
+	font-size: 20px;
+	width: 120px;
+	padding: 5px 10px;
+	border-radius: 100px;
+	color: #fff;
+	font-weight: 100;
+	margin: 20px 0px 0px 0px;
+	border: 1px solid rgb(33, 177, 177);
+	background-color: rgb(33, 177, 177);
+	transition: all 0.2s;
+}
+.form-card form button:hover {
+	cursor: pointer;
+	background-color: rgb(20, 117, 117);
+	box-shadow: 3px 3px 20px rgb(33, 177, 177);
+}
+.form-card h5 {
+	width: 100%;
+	text-align: center;
+	font-size: 20px;
+	font-weight: 100;
+	word-spacing: 2px;
+}
+.form-card h5 a {
+	color: rgb(33, 177, 177);
+}
+.cancel-button {
+	border: 1px solid red;
+	position: absolute;
+	color: red;
+	border-radius: 50%;
+	padding: 8px 12px;
+	top: 20px;
+	right: 20px;
+}
+.cancel-button:hover {
+	box-shadow: 3px 3px 20px red;
 }
