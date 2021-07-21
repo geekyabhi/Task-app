@@ -1,82 +1,72 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Task App</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet">        
-    <link href="https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,400&display=swap" rel="stylesheet">
-    <base href="/">
-    <link rel="stylesheet" href="./css/style.css">
-    
-    <link rel="stylesheet" href="/css/ionicons-2.0.1/css/ionicons.min.css">
-</head>
-<body>
-    <a href="/" class="home-button"><i class="ion-ios-home"></i></a>
-    <div class="login">
-        <h1>Login for your Account</h1>
-    </div>
-    <div class="signup-card">
-        <form>
-            <h2>Enter email and password</h2>
-            <div class="query"><label for="email">Email</label></div>
-            <input type="email" name="email" placeholder="Enter your email" class="dsc" required>
-            <div class="email error"></div>
-            <div class="query"><label for="password">Password</label></div>
-            <input type="password" name="password" placeholder="Enter password" required>
-            <div class="cantloginerror"></div>
-            <button class="btn-small btn-1">Login</button>
-        </form>
-        <h5>Don't have an account ? <a href="/users">Sign Up</a></h5>
-    </div>
-    {{!-- <div class="login-card">
-        <form>
-            <div class="query"><label for="email">Email</label></div>
-            <input type="text" name="email" required>
-            <div class="email error"></div>
-            <div class="query"></div><label for="password">Password</label></div>  
-            <input type="password" name="password" required>
-            <div class="password error"></div>
-            <button class="btn-small btn-1">Login</button>
-        </form>
-        <h5>Don't have an account ? <a href="/users">Sign Up</a></h5>
-    </div> --}}
-</body>
-<script>
-    const form=document.querySelector('form')
-    const cantloginerror=document.querySelector('.cantloginerror')
+	<head>
+		<title>Task App</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,400&display=swap"
+			rel="stylesheet"
+		/>
+		<base href="/" />
+		<link rel="stylesheet" href="./css/style-login.css" />
 
-    form.addEventListener('submit',async(e)=>{
-        e.preventDefault()
-        const email=form.email.value
-        const password=form.password.value
-        {{!-- console.log(email,password) --}}
-        try{
-            const res=await fetch('/users/login',{
-                method:'POST',
-                body:JSON.stringify({email,password}),
-                headers:{'Content-type':'application/json'}
-            })
-            const data=await res.json()
-            console.log(data)
-            if(data.errors)
-            {
-                console.log(data.errors)
-                cantloginerror.textContent='Wrong id or password'
-                form.email.value=""
-                form.password.value=""
-            }else{
-                window.location.replace("/")
-            }
-        }catch(e){
-            console.log(e)        
-        }
-    })
-    form.addEventListener('click',errormsz)
-    function errormsz(e){
-        if(e.target.classList.contains('dsc'))
-                cantloginerror.textContent=""
-    }    
+		<link
+			rel="stylesheet"
+			href="/css/ionicons-2.0.1/css/ionicons.min.css"
+		/>
+	</head>
+	<body>
+		<div class="card">
+			{{! <a href="/" class="home-button"><i class="ion-ios-home"></i></a> }}
+			<h1>Login for your Account</h1>
+			<div class="form-card">
+				<form>
+					<div class="query"><label for="email">Email</label></div>
+					<input
+						type="email"
+						name="email"
+						placeholder="Enter your email"
+						class="dsc"
+						required
+					/>
+					<div class="email error"></div>
+					<div class="query"><label
+							for="password"
+						>Password</label></div>
+					<input
+						type="password"
+						name="password"
+						placeholder="Enter password"
+						required
+					/>
+					<div class="cantloginerror"></div>
+					<button class="btn-small btn-1">Login</button>
+				</form>
+				<h5>Don't have an account ? <a href="/users">Sign Up</a></h5>
+			</div>
+		</div>
+	</body>
+	<script>
+		const form=document.querySelector('form') const
+		cantloginerror=document.querySelector('.cantloginerror')
+		form.addEventListener('submit',async(e)=>{ e.preventDefault() const
+		email=form.email.value const password=form.password.value
+		{{! console.log(email,password) }}
+		try{ const res=await fetch('/users/login',{ method:'POST',
+		body:JSON.stringify({email,password}),
+		headers:{'Content-type':'application/json'} }) const data=await
+		res.json() console.log(data) if(data.errors) { console.log(data.errors)
+		cantloginerror.textContent='Wrong id or password' form.email.value=""
+		form.password.value="" }else{ window.location.replace("/") } }catch(e){
+		console.log(e) } }) form.addEventListener('click',errormsz) function
+		errormsz(e){ if(e.target.classList.contains('dsc'))
+		cantloginerror.textContent="" }
 
-
-</script>
+	</script>
 </html>

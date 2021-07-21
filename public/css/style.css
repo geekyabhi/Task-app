@@ -1,466 +1,103 @@
-*{
-    box-sizing: border-box;
+* {
+	box-sizing: border-box;
 }
-body{
-    background-image:url('../images/background-1.jpg');
-    background-attachment: fixed;
-    font-family: "Lato", sans-serif;
-    font-weight:400;
-    background-size: cover;
+body {
+	background-image: url("../images/background.jpg");
+	background-attachment: fixed;
+	background-position: center;
+	font-family: "Libre Franklin", sans-serif;
+	font-weight: 400;
+	background-size: cover;
 }
-a{
-    text-decoration: none;
+a {
+	text-decoration: none;
 }
-.options-1 ul{
-    float: right;
-}
-.options-1 ul li{
-    display: inline-block;
-    margin: 0 20px;
-}
-.options-1 ul li a{
-    text-decoration: none;
-    /* color:#fff; */
-}
-.btn-small{
-    margin: 10px ;
-    padding:10px 20px;
-    border: 1px solid coral;
-    border-radius: 40px;
-}
-.btn-1{
-    background-color: coral;
-    color: #fff;
-    transition: all 0.5s;
-}
-.btn-2{
-    color:coral;
-    transition: all 0.5s;
-}
-.btn-1:hover{
-    background-color: rgb(214, 98, 55);
-    border:1px solid rgb(214, 98, 55);
-}
-.btn-2:hover{
-    background-color: rgb(214, 98, 55);
-    border:1px solid rgb(214, 98, 55);
-    color: #fff;
-}
-.bait{
-    position: absolute;
-   color: black;
-   display: inline;
-   width:1100px;
-   top:20%;
-   left:55%;
-   transform: translate(-50%,-50%);
-   font-family: 'Pacifico', cursive;
-   font-weight: 300;
-   font-size: 70px; 
-   float: left;
-}
-/* .big-btn{
-} */
-.btn-big{
-    font-family: 'Lato';
-    position: absolute;
-    display: inline-block;
-    top:50%;
-    width:400px;
-    text-align: center;
-    color:#fff;
-    font-weight: 400;
-    font-size: 30px;
-    border-radius: 40px;
-    background-color: coral;
-    padding:10px 50px;
-    left:50%;
-    transform: translate(-50%,-50%);
-    transition: all .5s;
-}
-.btn-big:hover{
-    background-color:  rgb(214, 98, 55);
-}
-.welcome-name{
-   position: absolute;
-   color: black;
-   display: inline;
-   width:900px;
-   top:30%;
-   left:55%;
-   transform: translate(-50%,-50%);
-   font-family: 'Pacifico', cursive;
-   font-weight: 300;
-   font-size: 50px; 
-   float: left;   
-}
-.options-2{
-    position: absolute;
-    top:60%;
-    left:50%;
-    transform: translate(-50%,-50%);
-}
-.options-2 .add-task{
-    display: inline;
-}
-.option-2 .view-task{
-    display: inline;
-}
-.option-2 a{
-    margin:0px 40px;
-}
-.greetings{
-    display: inline-block;
-    position: absolute;
-    font-family: 'Pacifico', cursive;;
-    left:50%;
-    top:10%;
-    font-size: 40px;
-    transform: translate(-50%,-50%);
-}
-.detail-card{
-    display: inline-block;
-    box-shadow: 20px 20px 30px #000;
-    position: absolute;
-    top: 50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    background-color: rgba(255, 255, 255, 0.76);
-    width: 900px;
-    padding: 30px;
-}
-.details{
-    margin-bottom: 40px;
-}
-.update-card{
-    display: inline-block;
-    box-shadow: 20px 20px 30px #000;
-    background-color: rgba(255, 255, 255, 0.76);
-    position: absolute;
-    top: 53%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    
-    width: 900px;
-    padding: 10px 30px;
-}
-.update-profile{
-    display: inline-block;
-    position: absolute;
-    font-family: 'Pacifico', cursive;;
-    left:50%;
-    top:10%;
-    font-size: 20px;
-    transform: translate(-50%,-50%);
-}
-.form h2{ 
-    text-align: center;
-    font-family: "Lato";
-    font-size: 40px;
-    font-weight: 300;
-    color: coral;
-}
-.form .query{
-    margin-bottom:5px;
-    font-size: 15px;
-}
-.form input{
-    margin-bottom: 5px;
-    width:70%;
-    height: 30px;
-    border-radius: 0%;
-    border:0.5px solid #000;
-}
-.form input:focus{
-    outline: none;
-}
-.form button{
-    width:40%;
 
+li {
+	list-style-type: none;
 }
-.form button:focus{
-    outline:none;
+.main-body {
+	display: flex;
+	height: 90vh;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
 }
-.signup{
-    display: inline-block;
-    position: absolute;
-    font-family: 'Pacifico', cursive;;
-    left:50%;
-    top:10%;
-    font-size: 20px;
-    transform: translate(-50%,-50%);   
+.heading {
+	width: 100%;
+	display: flex;
+	align-items: center;
 }
-.signup-card{
-    position: absolute;
-    padding:20px 30px;
-    display: inline-block;
-    box-shadow: 20px 20px 30px #000;
-    background-color: rgba(255, 255, 255, 0.76);
-    width:500px;
-    top:55%;
-    left:50%;
-    transform: translate(-50%,-50%);
+.nav-bar {
+	display: flex;
+	width: fit-content;
+	margin-left: auto;
 }
-.signup-card h2{
-    font-family: 'Lato';
-    text-align: center;
-    font-weight: 300;
-    color: coral;
-    font-size: 36px;
+
+.nav-bar a {
+	padding: 16px 30px;
+	margin: 20px 20px;
+	border-radius: 100px;
+	border: 1px solid rgb(33, 177, 177);
 }
-.signup-card input{
-    width: 80%;
-    height: 20px;
-    border-radius: 0%;
-    border:1px solid #000;
-    margin:5px;
+.nav-bar .btn-1 {
+	color: #fff;
+	background-color: rgb(33, 177, 177);
+	transition: all 0.2s;
 }
-.signup-card button{
-    width:40%;
-    margin: 15px;
+
+.nav-bar .btn-2 {
+	color: rgb(33, 177, 177);
+	background-color: transparent;
+	transition: all 0.2s;
 }
-.signup-card h5{
-    font-size: 15px;
+
+.nav-bar .btn-1:hover {
+	background-color: rgb(20, 117, 117);
+	box-shadow: 2px 2px 30px rgb(33, 177, 177);
 }
-.signup-card h5 a{
-    color:coral;
+
+.nav-bar .btn-2:hover {
+	color: #fff;
+	background-color: rgb(20, 117, 117);
+	box-shadow: 2px 2px 30px rgb(33, 177, 177);
 }
-.signup-card input:focus,.signup-card button:focus{
-    outline: none;
+
+.centre-body {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
 }
-.signup-card .query{   
-    margin-bottom:5px;
-    font-size: 15px;
+.heading {
+	position: absolute;
+	top: 0;
 }
-.login{
-    display: inline-block;
-    position: absolute;
-    font-family: 'Pacifico', cursive;;
-    left:50%;
-    top:10%;
-    font-size: 20px;
-    transform: translate(-50%,-50%);
+
+.welcome-name,
+.bait {
+	margin-bottom: 30px;
+	font-size: 30px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	word-spacing: 3px;
+	font-weight: 300;
 }
-.login-card{
-    display: inline-block;
-    border: 1px solid #000;
+
+.centre-body .add-proposal a {
+	padding: 16px 30px;
+	margin: 40px 20px;
+	font-size: 20px;
+	font-weight: 100;
+	border-radius: 100px;
+	background-color: rgb(33, 177, 177);
+	border: 1px solid rgb(33, 177, 177);
+	color: #fff;
+	transition: all 0.2s;
 }
-.task-list{
-    /* display: none; */
-    /* position: absolute;
-    left:50%; */
-    display: block;
-    margin-top: 50px;
-    /* float: left;
-    box-sizing: border-box; */
-    list-style: none;
-    /* transform: translateX(-50%); */
-}
-.task-list li{
-    display:inline-block;
-    transition: all .5s;
-    /* float: left; */
-}
-.task-list .task-card{
-    background-color:rgba(255, 255, 255, 0.712) ;
-    box-shadow: 15px 15px 40px #000;
-    margin-bottom: 50px;
-    /* display: inline-block; */
-    box-sizing: border-box;
-    padding: 10px 30px;
-    /* width: 100%; */
-    margin-right: 70px;
-    padding-bottom: 30px;
-    transition: all .5s;
-}
-.task-list .task-card:hover{
-    transform: scale(1.05);
-}
-.task-list li:nth-child(3n+1){
-    /* background-color: coral; */
-    margin-left: 20px;
-}
-.task-list li:nth-child(3n){
-    margin-right: 0px;
-    /* background-color: coral; */
-}
-.task-list .task-card h3{
-    color: coral;
-    font-family: 'Lato';
-    font-weight: 400;
-    font-size: 30px;
-}
-.task-list button{
-    background-color: crimson;
-    border: none;
-    padding: 5px;
-    color: #fff;
-    border-radius: 2px;
-    transition: all .5s;
-}
-.task-list button:hover{
-    transform: scale(1.05);
-}
-.task-list button:focus{
-    outline: none;
-}
-.add-new-task{
-    position: fixed;
-    left: 95%;
-    top: 85%;
-    background-color:transparent;
-    /* border-radius: 50%; */
-    color:crimson;
-    text-shadow:10px 10px 30px #000;
-    font-size: 60px;
-    transition: all .5s;
-    /* width:40px;
-    height: 40px;
-    text-align: center;
-    padding-top: -10px;
-    /* padding-bottom: 10px; */
-    /* font-size: 50px; */ 
-}
-.add-new-task:hover{
-    transform: scale(1.1);
-    text-shadow:15px 15px 25px #000;
-}
-.no-task-message{
-    position: absolute;
-    left: 50%;
-    top: 40%;
-    transform: translate(-50%,-50%);
-    color: crimson;
-    font-size: 40px;
-}
-.add-task-form-card{
-    position: absolute;
-    top: 50%;
-    left:50%;
-    display: inline-block;
-    box-shadow: 20px 20px 30px #000;
-    transform: translate(-50%,-50%);
-    background-color: rgba(255, 255, 255, 0.637);
-    padding: 30px;
-    width:450px;
-}
-.add-task-form-card h2{
-    text-align: center;
-    color: coral;
-    font-family: 'Lato';
-    font-weight: 400;
-}
-.add-task-form-card input{
-    display: block;
-    width: 80%;
-    height: 30px;
-    margin:10px 0;
-    border:1px solid #000;
-    border-radius: 0%;
-}
-.add-task-form-card input:focus{
-    outline: none;
-}
-.add-task-form-card a{
-    display: inline-block;
-    /* position: relative; */
-    top:50%;
-    left:50%;
-}
-.add-task-form-card button{ 
-    display: inline-block;
-}
-.add-task-form-card button:focus{
-    outline: none;
-}
-.home-button{
-    position: fixed;
-    font-size: 40px;
-    color: coral;
-    left: 93%;
-    top:5%;
-    border:3px solid coral;
-    border-radius: 50%;
-    padding: 3px 11px;
-    text-shadow: 10px 10px 30px #000;
-    transition: all .5s;
-}
-.home-button:hover{
-    transform: scale(1.03);
-    text-shadow: 15px 15px 30px #000;
-}
-.footer{
-    background-color: #fff;
-    position: absolute;
-    bottom: 0%;
-    width: 100%;
-    border-top: 3px solid coral;
-    left:0%;
-    margin-left: 0%;
-}
-.footer h2{
-    font-size: 20px;
-    margin-left: 200px;
-    word-spacing: 3px;
-    letter-spacing: 1px;
-    text-align: center;
-    display: inline-block;
-}
-.footer a{
-    color: coral;
-    transition: all 1s;
-}
-.footer a:hover{
-    text-decoration: underline;
-}
-.footer h2:last-child{
-    margin-left: 100px;
-}
-.about-card{
-    display: inline-block;
-    box-shadow: 20px 20px 30px #000;
-    position: absolute;
-    top: 50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    background-color: #fff;
-    width: 900px;
-    padding: 30px;
-}
-.about-photo{
-    display: block;
-    width:30%;
-    float:left;
-}
-.about-para{
-    display: block;
-    width: 60%;
-    float: left;
-    margin-left: 20px;
-    margin-top: 0%;
-    /* border:1px solid #000; */
-}
-.about-para h2{
-    transition: all.5s;
-}
-.about-para h2:hover{
-    transform: translateY(-2px);
-}
-.about-para a{
-    color:coral;
-}
-.about-photo img{
-    background-attachment: fixed;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-}
-.cantloginerror{
-    color: crimson;
-    font-size: 15px !important;
-}
-.emailerror,.passworderror{
-    color: crimson;
-    font-size: 12px;
-    margin-bottom: 5px;
+
+.add-proposal a:hover {
+	background-color: rgb(20, 117, 117);
+	box-shadow: 2px 2px 30px rgb(33, 177, 177);
 }
