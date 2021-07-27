@@ -1,0 +1,51 @@
+.add-task-button {
+	position: fixed;
+	top: 85vh;
+	right: 40px;
+	font-size: 50px;
+	font-weight: 100;
+	color: rgb(93, 0, 255);
+	border: 1px solid rgb(93, 0, 255);
+	padding: 3px 17px;
+	border-radius: 50%;
+	transition: all 0.2s;
+}
+
+.add-task-button:hover {
+	box-shadow: 2px 2px 20px rgb(93, 0, 255);
+}
+
+.task-container {
+	width: 100%;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+}
+
+.task-list {
+	width: 80%;
+	display: flex;
+	border: chartreuse 2px solid;
+	align-items: center;
+	justify-content: space-evenly;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.list-item {
+	margin: 30px;
+	width: 30%;
+	border: 1px solid red;
+}
+
+.task-card {
+	padding: 10px 30px 20px 30px;
+	border: 1px solid #000;
+	position: relative;
+}
+
+.del-Btn {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}

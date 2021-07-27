@@ -30,43 +30,15 @@ router.get("/task", auth, async (req, res) => {
 	try {
 		const match = {};
 		const sort = {};
-
-		// Tasks.find({}).then(task=>{
-		//     console.log(task)
-		// })
 		if (req.query.completed) {
 			match.completed = req.query.completed === "true";
 		}
-		// match.completed=req.query.completed
-
 		if (req.query.sortBy) {
 			const parts = req.query.sortBy.split(":");
 			sort[parts[0]] = parts[1] === "desc" ? -1 : 1;
 		}
-		await req.user
-			.populate({
-				path: "tasks",
-				match: match,
-				options: {
-					limit: parseInt(req.query.limit),
-					skip: parseInt(req.query.skip),
-					sort: sort,
-				},
-			})
-			.execPopulate();
-		let completeTaskArr = [];
-		const taskarr = req.user.tasks;
-		var i = 0;
-		taskarr.forEach(async (task) => {
-			i++;
-			const uniqueId = task._id;
-			const completetask = await Tasks.findById(uniqueId);
-			// console.log(completetask)
-			// completeTaskArr.push({completetask})
-			console.log(i);
-		});
-		console.log(completeTaskArr.length);
-		res.send(completeTaskArr);
+		const tasks = await Tasks.find({ owner: req.user });
+		res.send(tasks);
 	} catch (e) {
 		res.status(500).send(e);
 		console.log(e);
