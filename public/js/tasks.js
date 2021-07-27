@@ -31,10 +31,10 @@ fetch("/task", {
 					completed.textContent = "Completed : " + task.completed;
 					var createdAt = document.createElement("p");
 					createdAt.textContent = "Created At: " + task.createdAt;
-					var deleteButton = document.createElement("button");
+					var deleteButton = document.createElement("div");
 					deleteButton.id = task._id;
 					deleteButton.classList.add("del-Btn");
-					deleteButton.textContent = "Delete";
+					deleteButton.textContent = "X";
 					newDiv.appendChild(taskNo);
 					newDiv.appendChild(description);
 					newDiv.appendChild(completed);

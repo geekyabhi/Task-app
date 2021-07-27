@@ -25,7 +25,7 @@
 .task-list {
 	width: 80%;
 	display: flex;
-	border: chartreuse 2px solid;
+	background-color: rgba(255, 255, 255, 0.605);
 	align-items: center;
 	justify-content: space-evenly;
 	flex-direction: row;
@@ -33,19 +33,31 @@
 }
 
 .list-item {
-	margin: 30px;
+	margin: 30px 30px 40px 30px;
 	width: 30%;
-	border: 1px solid red;
 }
 
 .task-card {
 	padding: 10px 30px 20px 30px;
-	border: 1px solid #000;
+	box-shadow: 3px 3px 20px rgb(33, 177, 177);
 	position: relative;
 }
 
+.task-card:hover {
+	box-shadow: 5px 5px 30px rgba(33, 177, 177, 0.68);
+}
+
 .del-Btn {
+	border: 1px solid red;
 	position: absolute;
+	color: red;
+	border-radius: 50%;
+	padding: 8px 12px;
 	top: 20px;
 	right: 20px;
+	transition: all 0.2s;
+	cursor: pointer;
+}
+.del-Btn:hover {
+	box-shadow: 3px 3px 20px red;
 }
