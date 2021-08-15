@@ -43,13 +43,13 @@ router.get("/task", auth, async (req, res) => {
 		const modifiedTasks = [];
 		tasks.forEach((task) => {
 			modifiedTasks.push({
-				...task,
+				_id: task._id,
+				description: task.description,
+				completed: task.completed,
 				dateOfCreation: moment(task.createdAt).format("DD/MM/YYYY"),
-				timeOfCreation: task.createdAt,
+				timeOfCreation: moment(task.createdAt).format("hh:mm A"),
 			});
 		});
-		console.log("Hello");
-		console.log(modifiedTasks);
 		res.status(201).send(modifiedTasks);
 	} catch (e) {
 		res.status(500).send(e);
