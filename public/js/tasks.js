@@ -29,8 +29,12 @@ fetch("/task", {
 					console.log(task.completed);
 					var completed = document.createElement("p");
 					completed.textContent = "Completed : " + task.completed;
-					var createdAt = document.createElement("p");
-					createdAt.textContent = "Created At: " + task.createdAt;
+					var timeOfCreation = document.createElement("p");
+					timeOfCreation.textContent =
+						"Created At: " + task.timeOfCreation;
+					var dateOfCreation = document.createElement("p");
+					dateOfCreation.textContent =
+						"Created At: " + task.dateOfCreation;
 					var deleteButton = document.createElement("div");
 					deleteButton.id = task._id;
 					deleteButton.classList.add("del-Btn");
@@ -38,7 +42,8 @@ fetch("/task", {
 					newDiv.appendChild(taskNo);
 					newDiv.appendChild(description);
 					newDiv.appendChild(completed);
-					newDiv.appendChild(createdAt);
+					newDiv.appendChild(timeOfCreation);
+					newDiv.appendChild(dateOfCreation);
 					newDiv.appendChild(deleteButton);
 					newListItem.appendChild(newDiv);
 					taskList.appendChild(newListItem);
