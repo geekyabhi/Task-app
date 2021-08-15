@@ -60,21 +60,18 @@ router.get("/task", auth, async (req, res) => {
 router.get("/task/:id", auth, async (req, res) => {
 	const _id = req.params.id;
 	try {
-		const tasks = await Tasks.find({ _id, owner: req.user._id });
-		if (!tasks) {
+		const task = await Tasks.findOne({ _id, owner: req.user._id });
+		if (!task) {
 			return res.send(404);
 		}
-		const modifiedTasks = [];
-		tasks.forEach((task) => {
-			modifiedTasks.push({
-				...task,
-				dateOfCreation: task.createdAt,
-				timeOfCreation: task.createdAt,
-			});
-		});
-		console.log("Hello");
-		console.log(modifiedTasks);
-		res.status(201).send(modifiedTasks);
+		const modifiedTask = {
+			_id: task._id,
+			description: task.description,
+			completed: task.completed,
+			dateOfCreation: moment(task.createdAt).format("DD/MM/YYYY"),
+			timeOfCreation: moment(task.createdAt).format("hh:mm A"),
+		};
+		res.status(201).send(modifiedTask);
 	} catch (e) {
 		res.status(500).send(e);
 		console.log(e);
