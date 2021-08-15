@@ -1,5 +1,6 @@
 const express = require("express");
 const { auth, checkUser } = require("../middleware/auth");
+const moment = require("moment");
 
 const Tasks = require("../models/task");
 
@@ -38,7 +39,18 @@ router.get("/task", auth, async (req, res) => {
 			sort[parts[0]] = parts[1] === "desc" ? -1 : 1;
 		}
 		const tasks = await Tasks.find({ owner: req.user });
-		res.send(tasks);
+
+		const modifiedTasks = [];
+		tasks.forEach((task) => {
+			modifiedTasks.push({
+				...task,
+				dateOfCreation: moment(task.createdAt).format("DD/MM/YYYY"),
+				timeOfCreation: task.createdAt,
+			});
+		});
+		console.log("Hello");
+		console.log(modifiedTasks);
+		res.status(201).send(modifiedTasks);
 	} catch (e) {
 		res.status(500).send(e);
 		console.log(e);
@@ -52,7 +64,17 @@ router.get("/task/:id", auth, async (req, res) => {
 		if (!tasks) {
 			return res.send(404);
 		}
-		res.status(201).send(tasks);
+		const modifiedTasks = [];
+		tasks.forEach((task) => {
+			modifiedTasks.push({
+				...task,
+				dateOfCreation: task.createdAt,
+				timeOfCreation: task.createdAt,
+			});
+		});
+		console.log("Hello");
+		console.log(modifiedTasks);
+		res.status(201).send(modifiedTasks);
 	} catch (e) {
 		res.status(500).send(e);
 		console.log(e);

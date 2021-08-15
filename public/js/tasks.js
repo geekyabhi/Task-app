@@ -31,10 +31,10 @@ fetch("/task", {
 					completed.textContent = "Completed : " + task.completed;
 					var timeOfCreation = document.createElement("p");
 					timeOfCreation.textContent =
-						"Created At: " + task.timeOfCreation;
+						"Creation Time: " + task.timeOfCreation;
 					var dateOfCreation = document.createElement("p");
 					dateOfCreation.textContent =
-						"Created At: " + task.dateOfCreation;
+						"Creation Date: " + task.dateOfCreation;
 					var deleteButton = document.createElement("div");
 					deleteButton.id = task._id;
 					deleteButton.classList.add("del-Btn");
