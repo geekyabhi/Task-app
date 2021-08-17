@@ -1,65 +1,39 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task App</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet">        
-    <link href="https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="/css/ionicons-2.0.1/css/ionicons.min.css">
-</head>
-<body>
-    <a href="/" class="home-button"><i class="ion-ios-home"></i></a>
-    <div class="greetings">
-        <h1>Hello {{user.name}} !</h1>
-    </div>
-    <div class="detail-card">
-        <div class="details">        
-        </div>
-        <a href="/update" class="btn-small btn-1">Update</a>
-        <a href="" class='delete-account btn-small btn-2'>Delete Profile For ever</a>
-    </div>
-</body>
-<script>
-    var delAcc=document.querySelector('.delete-account')
-    fetch('/users/me',{
-      headers : { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-       }
-    }).then(response=>{
-        response.json().then(data=>{
-            console.log(data)
-            var profile=document.querySelector('.details')
-
-            var name=document.createElement('h2')
-            name.textContent='Name : '+data.name
-
-            var age=document.createElement('h4')
-            age.textContent='Age : '+data.age
-            var email=document.createElement('h4')
-            email.textContent='Email : '+data.email
-            var createdAt=document.createElement('h4')
-            createdAt.textContent='Created At : '+data.createdAt
-
-            profile.appendChild(name)
-            profile.appendChild(age)
-            profile.appendChild(email)
-            profile.appendChild(createdAt)
-
-        })
-    })
-    delAcc.addEventListener('click',async(e)=>{
-        try{
-            await fetch('/users/me',{
-                method:'DELETE'
-            })
-            window.location.replace("/")
-        }catch(e){
-            
-        }
-    })
-</script>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task App</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,400&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="./css/style.css" />
+		<link rel="stylesheet" href="./css/style-profile.css" />
+		<link
+			rel="stylesheet"
+			href="/css/ionicons-2.0.1/css/ionicons.min.css"
+		/>
+	</head>
+	<body>
+		<a href="/" class="home-button"><i class="ion-ios-home"></i></a>
+		<div class="greetings">
+			<h1>Hello {{user.name}} !</h1>
+		</div>
+		<div class="detail-card">
+			<div class="details">
+			</div>
+			<a href="/update" class="btn-small btn-1">Update</a>
+			<a href="" class="delete-account btn-small btn-2">Delete Profile For
+				ever</a>
+		</div>
+	</body>
+	<script src="./js/profile.js"></script>
 </html>
