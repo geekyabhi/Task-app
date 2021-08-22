@@ -12,7 +12,7 @@ fetch("/users/me", {
 		email.textContent = "Email : " + data.email;
 		var createdAt = document.createElement("h4");
 		createdAt.textContent = "Created At : " + data.createdAt;
-		profile.appendChild(name);
+		// profile.appendChild(name);
 		profile.appendChild(age);
 		profile.appendChild(email);
 		profile.appendChild(createdAt);
