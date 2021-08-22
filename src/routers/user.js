@@ -1,7 +1,7 @@
 const express = require("express");
 const User = require("../models/user");
 const sharp = require("sharp");
-
+const moment = require("moment");
 const multer = require("multer");
 const { sendWelcomeEmail, sendCancelEmail } = require("../emails/account");
 const Tasks = require("../models/task");
@@ -104,7 +104,10 @@ router.get("/viewprofile", auth, async (req, res) => {
 
 router.get("/users/me", auth, async (req, res) => {
 	try {
-		res.send(req.user);
+		console.log(req.user);
+		let obj = JSON.parse(JSON.stringify(req.user));
+		obj["createdAt"] = moment(req.user.createdAt).format("DD/MM/YYYY");
+		res.send(obj);
 	} catch (e) {
 		res.status(500).send();
 		console.log("Error", e);
