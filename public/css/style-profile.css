@@ -16,8 +16,8 @@
 }
 .greetings {
 	height: 40px;
-	margin: auto;
-	margin-bottom: 40px;
+	padding: 0 20px;
+	margin-bottom: 30px;
 }
 .detail-card {
 	height: 150px;
