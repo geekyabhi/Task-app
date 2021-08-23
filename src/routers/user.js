@@ -104,7 +104,6 @@ router.get("/viewprofile", auth, async (req, res) => {
 
 router.get("/users/me", auth, async (req, res) => {
 	try {
-		console.log(req.user);
 		let obj = JSON.parse(JSON.stringify(req.user));
 		obj["createdAt"] = moment(req.user.createdAt).format("DD/MM/YYYY");
 		res.send(obj);

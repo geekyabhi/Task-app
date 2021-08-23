@@ -8,11 +8,11 @@
 }
 .wrapper {
 	width: 40%;
-	border: 1px #000 solid;
 	padding: 15px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	box-shadow: 5px 5px 30px #000;
 }
 .greetings {
 	height: 40px;
@@ -26,7 +26,6 @@
 }
 .options {
 	margin-top: 20px;
-	height: 15%;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
@@ -37,4 +36,24 @@
 }
 .profile-photo {
 	width: 30%;
+}
+.btn {
+	padding: 15px;
+	border: 1px black solid;
+	border-radius: 100px;
+	transition: all 0.2s;
+}
+.btn-1 {
+	border: 1px solid rgb(33, 177, 177);
+	color: rgb(33, 177, 177);
+}
+.btn-1:hover {
+	box-shadow: 3px 3px 20px rgb(33, 177, 177);
+}
+.btn-2 {
+	border: 1px solid red;
+	color: red;
+}
+.btn-2:hover {
+	box-shadow: 3px 3px 20px red;
 }
